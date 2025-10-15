@@ -8,11 +8,17 @@ function MainBody(){
     const [isShown, setShown] = React.useState(false);
 
     const ingredientElement = ingredient.map (ing =>{
-        return <li className="p-1" key={ing}>{ing.length >= 1 ? ing[0].toUpperCase() + ing.slice(1) : alert("empty input enter ingredient")}</li>
+        return <li className="p-1" key={ing}>{ing[0].toUpperCase() + ing.slice(1) }</li>
     })
 
     function getIngredient (formData){
         const newIngredient = formData.get('ingredient');
+
+
+        if(!newIngredient){
+            alert('Enter ingredient');
+            return;
+        }
 
         setIngredient(prevIngredent =>{
             return [
@@ -39,7 +45,7 @@ function MainBody(){
                 placeholder="e.g oregano..."
                 className="w-2/3 bg-white p-2 md:p-1 pl-3 rounded-lg" />
 
-                <button className="addIngredient w-[120px] md:w-[160px] text-base md:text-xl p-2">
+                <button className="addIngredient w-[120px] md:w-[160px] text-sm md:text-xl p-2">
                     Add ingredient
                 </button>
             </form>
